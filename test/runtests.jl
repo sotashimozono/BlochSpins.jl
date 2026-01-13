@@ -1,7 +1,7 @@
 ENV["GKSwstype"] = "100"
 
 using BlochSpins, Test
-const dirs = []
+const dirs = ["base", "ext"]
 
 const FIG_BASE = joinpath(pkgdir(BlochSpins), "docs", "src", "assets", "figures")
 const PATHS = Dict()
@@ -13,7 +13,9 @@ mkpath.(values(PATHS))
     @time for dir in dirs
         dirpath = joinpath(@__DIR__, dir)
         println("\nTest $(dirpath)")
-        files = sort(filter(f -> startswith(f, "test_") && endswith(f, ".jl"), readdir(dirpath)))
+        files = sort(
+            filter(f -> startswith(f, "test_") && endswith(f, ".jl"), readdir(dirpath))
+        )
         if isempty(files)
             println("  No test files found in $(dirpath).")
         else

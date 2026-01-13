@@ -1,5 +1,12 @@
 module BlochSpins
 
-greet() = print("Hello World!")
+using StaticArrays, LinearAlgebra
 
-end # module BlochSpins
+include("struct.jl")
+include("constants.jl")
+
+include("visualize.jl")
+
+include("export.jl")
+
+end
