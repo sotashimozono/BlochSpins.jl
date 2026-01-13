@@ -26,3 +26,7 @@ const b_up = k_up'
 const b_down = k_down'
 const b_plus = k_plus'
 const b_minus = k_minus'
+
+# --- Hamiltonians ---
+H_Zeeman(B::Float64, n::SVector) = -B * sum(n .* σ)
+export H_Zeeman
