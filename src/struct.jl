@@ -32,8 +32,14 @@ end
 
 Base.getindex(A::Operator, i::Int, j::Int) = A.data[i, j]
 Base.getindex(::Type{Operator}, a, b, c, d) = Operator(@SMatrix [a b; c d])
-function Base.typed_hvcat(::Type{Operator}, dims::Tuple{Int,Int}, elements...)
-    return Operator(SMatrix{2, 2, ComplexF64, 4}(elements...))
+
+function Base.typed_hvcat(::Type{Operator}, dims::Tuple{Vararg{Int}}, elements::Number...)
+    if length(elements) != 4
+        throw(ArgumentError("Operator must be a 2x2 matrix."))
+    end
+    return Operator(SMatrix{2, 2, ComplexF64, 4}(
+        elements[1], elements[3], elements[2], elements[4]
+    ))
 end
 
 # adjoint
