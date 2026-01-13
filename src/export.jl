@@ -1,3 +1,4 @@
+export AbstractQuantumObject, AbstractState, AbstractOperator
 export Ket, Bra, Operator
 export expect, normalize
 

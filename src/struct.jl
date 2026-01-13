@@ -32,6 +32,9 @@ end
 
 Base.getindex(A::Operator, i::Int, j::Int) = A.data[i, j]
 Base.getindex(::Type{Operator}, a, b, c, d) = Operator(@SMatrix [a b; c d])
+function Base.typed_hvcat(::Type{Operator}, dims::Tuple{Int,Int}, elements...)
+    return Operator(SMatrix{2, 2, ComplexF64, 4}(elements...))
+end
 
 # adjoint
 Base.adjoint(A::Operator) = Operator(adjoint(A.data))
