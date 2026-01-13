@@ -1,7 +1,7 @@
-# MyModule.jl
+# BlochSpins.jl
 
 ## Models
 
 ```@autodocs
-Modules = [MyModule]
+Modules = [BlochSpins]
 ```

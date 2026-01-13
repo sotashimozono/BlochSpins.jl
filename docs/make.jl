@@ -1,14 +1,14 @@
-using MyModule
+using BlochSpins
 using Documenter
 
 makedocs(
-    sitename = "MyModule.jl",
-    modules  = [MyModule],
+    sitename = "BlochSpins.jl",
+    modules  = [BlochSpins],
     pages    = [
         "Home" => "index.md"
     ]
 )
 
 deploydocs(
-    repo = "github.com/sotashimozono/MyModule.jl.git",
+    repo = "github.com/sotashimozono/BlochSpins.jl.git",
 )
