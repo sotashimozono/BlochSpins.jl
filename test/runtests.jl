@@ -1,7 +1,7 @@
 ENV["GKSwstype"] = "100"
 
 using BlochSpins, Test
-const dirs = ["base"]
+const dirs = ["base", "ext"]
 
 const FIG_BASE = joinpath(pkgdir(BlochSpins), "docs", "src", "assets", "figures")
 const PATHS = Dict()
