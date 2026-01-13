@@ -17,11 +17,3 @@ jobs:
       - uses: release-drafter/release-drafter@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-version-resolver:
-  major:
-    labels: ['major']
-  minor:
-    labels: ['minor']
-  patch:
-    labels: ['patch']
-  default: patch
