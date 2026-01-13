@@ -2,17 +2,17 @@ abstract type AbstractState{T} <: AbstractVector{T} end
 abstract type AbstractOperator{T} <: AbstractMatrix{T} end
 
 struct Ket{T} <: AbstractState{T}
-    v::SVector{2, T}
+    v::SVector{2,T}
 end
 
 struct Bra{T} <: AbstractState{T}
-    v::Adjoint{T, SVector{2, T}}
+    v::Adjoint{T,SVector{2,T}}
 end
 
 Base.getindex(s::AbstractState, i::Int) = s.v[i]
 Base.length(s::AbstractState) = length(s.v)
 
-Base.getindex(::Type{Ket}, x, y) = Ket(SVector{2, ComplexF64}(x, y))
+Base.getindex(::Type{Ket}, x, y) = Ket(SVector{2,ComplexF64}(x, y))
 
 # adjoint
 Base.adjoint(k::Ket) = Bra(adjoint(k.v))
@@ -24,9 +24,8 @@ Base.:+(k1::Ket, k2::Ket) = Ket(k1.v + k2.v)
 Base.:-(k1::Ket, k2::Ket) = Ket(k1.v - k2.v)
 Base.:*(c::Number, k::Ket) = Ket(c * k.v)
 
-
 struct Operator{T} <: AbstractOperator{T}
-    data::SMatrix{2, 2, T, 4}
+    data::SMatrix{2,2,T,4}
 end
 
 Base.getindex(A::Operator, i::Int, j::Int) = A.data[i, j]
@@ -36,9 +35,9 @@ function Base.typed_hvcat(::Type{Operator}, dims::Tuple{Vararg{Int}}, elements::
     if length(elements) != 4
         throw(ArgumentError("Operator must be a 2x2 matrix."))
     end
-    return Operator(SMatrix{2, 2, ComplexF64, 4}(
-        elements[1], elements[3], elements[2], elements[4]
-    ))
+    return Operator(
+        SMatrix{2,2,ComplexF64,4}(elements[1], elements[3], elements[2], elements[4])
+    )
 end
 
 # adjoint

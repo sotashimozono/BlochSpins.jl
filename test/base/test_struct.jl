@@ -5,7 +5,7 @@ using Test
         @test Ket[1, 0] isa AbstractState
         @test Ket[1, 0] isa Ket{ComplexF64}
         @test σx isa AbstractOperator
-        k_complex = Ket[1+1im, 0]
+        k_complex = Ket[1 + 1im, 0]
         @test k_complex[1] == 1.0 + 1.0im
         op = Operator[1 2; 3 4]
         @test op[1, 1] == 1.0
@@ -43,10 +43,10 @@ using Test
     end
 
     @testset "Physics and Expectation Values" begin
-        @test expect(σx, k_plus)  ≈  1.0
+        @test expect(σx, k_plus) ≈ 1.0
         @test expect(σx, k_minus) ≈ -1.0
-        @test expect(σy, k_right) ≈  1.0
-        @test expect(σy, k_left)  ≈ -1.0
+        @test expect(σy, k_right) ≈ 1.0
+        @test expect(σy, k_left) ≈ -1.0
         @test expect(σz, k_plus) ≈ 0.0 atol=1e-15
         @test (b_up * σx).v ≈ b_down.v
     end
@@ -55,7 +55,7 @@ using Test
         ψ = normalize(Ket[1.0im, 2.0])
         val = expect(σy, ψ)
         @test imag(val) ≈ 0.0 atol=1e-15
-        
+
         @test (σx * ψ)'.v ≈ (ψ' * σx).v
     end
 end

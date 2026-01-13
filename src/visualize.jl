@@ -22,4 +22,3 @@ function visualize_axis! end
 Draws a vector `vec` originating from the origin in the given axis `ax` of the figure `fig`.
 """
 function visualize_vector! end
-

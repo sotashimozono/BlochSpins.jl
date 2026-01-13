@@ -10,7 +10,7 @@ using CairoMakie
     @testset "Sphere Visualization" begin
         fig, ax = init_figure()
         @test_nowarn visualize_bloch_sphere!(fig, ax)
-        @test length(ax.scene.plots) >= 2 
+        @test length(ax.scene.plots) >= 2
     end
 
     @testset "Axis Visualization" begin
@@ -21,7 +21,7 @@ using CairoMakie
 
     @testset "Vector Visualization" begin
         fig, ax = init_figure()
-        
+
         v = bloch_vector(k_plus)
         @test_nowarn visualize_vector!(fig, ax, v)
         @test any(p -> p isa Makie.Arrows, ax.scene.plots)
