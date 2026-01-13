@@ -1,6 +1,5 @@
-abstract type AbstractQuantumObject{T} end
-abstract type AbstractState{T} <: AbstractQuantumObject{T} end
-abstract type AbstractOperator{T} <: AbstractQuantumObject{T} end
+abstract type AbstractState{T} <: AbstractVector{T} end
+abstract type AbstractOperator{T} <: AbstractMatrix{T} end
 
 struct Ket{T} <: AbstractState{T}
     v::SVector{2, T}
