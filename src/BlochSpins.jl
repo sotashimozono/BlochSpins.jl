@@ -2,11 +2,11 @@ module BlochSpins
 
 using StaticArrays, LinearAlgebra
 
-include("struct.jl")
-include("constants.jl")
+include("core/struct.jl")
+include("core/constants.jl")
 
-include("visualize.jl")
-
+include("utils/spin_dynamics.jl")
+include("utils/visualize.jl")
 include("export.jl")
 
 end
