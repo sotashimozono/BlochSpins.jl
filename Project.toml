@@ -1,6 +1,6 @@
 name = "BlochSpins"
 uuid = "256207cc-4c09-4d5f-9b7b-1beb86bf7525"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["sota <shimozono-sota631@g.ecc.u-tokyo.ac.jp>"]
 
 [deps]
