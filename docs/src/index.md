@@ -5,9 +5,11 @@ Bloch球での運動を実際に記述する必要があったので、簡易的
 
 今回はLiterate.jlというパッケージを用いてコードと結果が対応して描画されるような状態を一つの目標として書いてみた。
 
-## Example
+## Examples
 
-試しに具体的な例として、以下のような設定を考える。
+[Examples](https://codes.sota-shimozono.com/BlochSpins.jl/dev/generated/visualize_residuals/)タブにあるページはそれに対応するソースコードが repository の examples に用意してある。必要に応じて、参照するとよい。
+
+具体的な例として、以下のような設定を考える。
 
 - $(0, t_1)$ までを $(B,B,B)$ 方向の磁場
 - $(0, t_1)$ までを $(B,B,-B)$ 方向の磁場
