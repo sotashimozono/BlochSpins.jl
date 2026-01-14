@@ -1,6 +1,27 @@
 # BlochSpins.jl
 
-## Models
+Bloch球での運動を実際に記述する必要があったので、簡易的に作成したものである。
+[BlochSpins.jl](https://github.com/sotashimozono/BlochSpins.jl) にソースコードや基となる実行コードが用意されている。
+
+今回はLiterate.jlというパッケージを用いてコードと結果が対応して描画されるような状態を一つの目標として書いてみた。
+
+## Examples
+
+[Examples](https://codes.sota-shimozono.com/BlochSpins.jl/dev/generated/visualize_residuals/)タブにあるページはそれに対応するソースコードが repository の examples に用意してある。必要に応じて、参照するとよい。
+
+具体的な例として、以下のような設定を考える。
+
+- $(0, t_1)$ までを $(B,B,B)$ 方向の磁場
+- $(0, t_1)$ までを $(B,B,-B)$ 方向の磁場
+
+この時にスピンと磁場の相互作用はZeeman相互作用を考える。初期状態として$\ket{\uparrow}$、終状態として$\ket{\downarrow}$に到達するような軌道を計算したい。そこで、初期状態を順方向に時間発展した軌道と終状態を逆向きに時間発展した軌道を計算し、それを描画する。  
+すると、視覚的にこの外場を中心として円軌道を描いているということが簡単に確認することができる。
+
+![figure](asset/figure/bloch_trajectory.gif)
+
+この設定に物理的意味があるかといわれたら正直微妙だが、2準位系を視覚的に学ぶ良い例である。
+
+## APIs
 
 ```@autodocs
 Modules = [BlochSpins]
