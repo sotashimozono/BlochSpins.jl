@@ -60,4 +60,3 @@ function expect(op::AbstractOperator, k::Ket)
 end
 StaticArrays.normalize(k::Ket) = Ket(StaticArrays.normalize(k.v))
 StaticArrays.normalize(k::Bra) = Bra(StaticArrays.normalize(k.v))
-
