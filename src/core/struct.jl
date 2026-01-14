@@ -24,6 +24,14 @@ Base.:+(k1::Ket, k2::Ket) = Ket(k1.v + k2.v)
 Base.:-(k1::Ket, k2::Ket) = Ket(k1.v - k2.v)
 Base.:*(c::Number, k::Ket) = Ket(c * k.v)
 
+# Implementing required interfaces
+Base.getindex(s::AbstractState, i::Int) = s.v[i]
+Base.length(s::AbstractState) = length(s.v)
+Base.size(s::AbstractState) = (2,)
+Base.eltype(::Type{<:Ket{T}}) where {T} = T
+Base.eltype(::Type{<:Bra{T}}) where {T} = T
+Base.IndexStyle(::Type{<:AbstractState}) = IndexLinear()
+
 struct Operator{T} <: AbstractOperator{T}
     data::SMatrix{2,2,T,4}
 end
@@ -61,3 +69,8 @@ end
 StaticArrays.normalize(k::Ket) = Ket(StaticArrays.normalize(k.v))
 StaticArrays.normalize(k::Bra) = Bra(StaticArrays.normalize(k.v))
 
+# Implementing required interfaces
+Base.size(op::Operator) = (2, 2)
+Base.length(op::Operator) = 4
+Base.eltype(::Type{Operator{T}}) where {T} = T
+Base.IndexStyle(::Type{<:Operator}) = IndexCartesian()
