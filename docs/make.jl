@@ -30,7 +30,7 @@ makedocs(;
     ],
     format=Documenter.HTML(;
         prettyurls=get(ENV, "CI", nothing) == "true",
-        canonical="https://sotashimozono.github.io/BlochSpins.jl",
+        canonical="https://codes.sota-shimozono.com/BlochSpins.jl",
         size_threshold=1000 * 1024,
         size_threshold_warn=800 * 1024,
     ),
