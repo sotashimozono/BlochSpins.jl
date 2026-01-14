@@ -1,25 +1,39 @@
 using BlochSpins
 using Documenter
+using Literate
+using CairoMakie
+CairoMakie.activate!()
 
-# docs/make.jl の中
-Literate.markdown(
-    "script/visualize_residuals.jl",
-    "docs/src/generated";
-    execute=true,
-)
+# define paths
+SCRIPT_DIR = joinpath(@__DIR__, "..", "script")
+OUTPUT_DIR = joinpath(@__DIR__, "src", "generated")
+mkpath(OUTPUT_DIR)
 
+filenames = [
+    "visualize_residuals",
+]
+for filename in filenames
+    Literate.markdown(
+        joinpath(SCRIPT_DIR, filename * ".jl"),
+        OUTPUT_DIR;
+        execute=true,
+    )
+end
 makedocs(;
     modules=[BlochSpins],
-    sitename="BlochSpins Study Notes",
+    sitename="BlochSpins.jl",
     pages=[
-        "Home" => "index.md", "Visualizing Residuals" => "generated/visualize_residuals.md"
+        "Home" => "index.md",
+        "Examples" => [
+            "Visualize Residual Vector" => "generated/visualize_residuals.md",
+        ],
     ],
     format=Documenter.HTML(;
-        prettyurls=get(ENV, "CI", nothing) == "true", # GitHub上ではURLを綺麗にする
-        canonical="https://あなたのユーザー名.github.io/BlochSpins.jl",
+        prettyurls=get(ENV, "CI", nothing) == "true",
+        canonical="https://sotashimozono.github.io/BlochSpins.jl",
+        size_threshold=1000 * 1024,
+        size_threshold_warn=800 * 1024,
     ),
 )
-
-makedocs(; sitename="BlochSpins.jl", modules=[BlochSpins], pages=["Home" => "index.md"])
 
 deploydocs(; repo="github.com/sotashimozono/BlochSpins.jl.git")

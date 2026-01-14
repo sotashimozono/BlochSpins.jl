@@ -18,16 +18,17 @@ function velocity_vector(ψ, ϕ)
     z = ϕ' * σz * ψ
     return SVector(x, y, z)
 end
+
 # point on Bloch sphere can be spacified by (θ, ϕ)
 function bloch_ket(θ, ϕ)
     c = cos(θ / 2) + 0im
     s = exp(im * ϕ) * sin(θ / 2)
     return Ket(SVector{2,ComplexF64}(c, s))
 end
+
 # compute norm of gradient of energy expectation value w.r.t. (θ, ϕ)
 function gradient_norm(θ, ϕ, H_data)
     ψ = bloch_ket(θ, ϕ)
-    # エネルギー期待値の勾配 (残差ベクトル |ϕ> の定数倍)
     grad_vec = Zygote.gradient(v -> real(adjoint(v) * H_data * v), ψ.v)[1]
     return norm(grad_vec)
 end
@@ -70,6 +71,7 @@ arrows3d!(
 # --- calculate residual ---
 # The residual vector points in the direction of increasing energy.
 # To rotate the spin toward the ground state, we need to apply $-i$.
+
 ψ = normalize(ψ)
 Residual = H * ψ - expect(H, ψ) * ψ
 v_fwd = Point3f(real.(velocity_vector(ψ, Residual))...)
