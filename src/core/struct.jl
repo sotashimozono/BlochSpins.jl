@@ -61,3 +61,8 @@ end
 StaticArrays.normalize(k::Ket) = Ket(StaticArrays.normalize(k.v))
 StaticArrays.normalize(k::Bra) = Bra(StaticArrays.normalize(k.v))
 
+# Implementing required interfaces
+Base.size(op::Operator) = (2, 2)
+Base.length(op::Operator) = 4
+Base.eltype(::Type{Operator{T}}) where {T} = T
+Base.IndexStyle(::Type{<:Operator}) = IndexCartesian()
